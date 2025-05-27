@@ -1,5 +1,2 @@
-{
-  "start_url": "/unicocampania/",
-  "scope": "/unicocampania/",
-  "display": "standalone"
-}
+"start_url": ".",
+"display": "standalone"
