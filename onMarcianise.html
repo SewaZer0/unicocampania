@@ -37,22 +37,37 @@
 
   </head>
   <body>
-    <!-- Header Section -->
+  <!-- Header Section -->
     <div class="header">
-      <a href="./noconnection/" class="left-icons">
-        <img
-          src="./icons/less.png"
-          alt="Back"
-          class="icon-left"
-          id="back-icon"
-        />
-        <img
-          src="./icons/home.png"
-          alt="Home"
-          class="icon-home"
-          id="home-icon"
-        />
-      </a>
+     <div class="icon-wrapper" onclick="openDropdown()">
+  <img src="./icons/less.png" alt="Back" class="icon-left" />
+  <img src="./icons/home.png" alt="Home" class="icon-home" />
+</div>
+
+<!-- Select nascosto -->
+<select id="hiddenDropdown" style="display: none;">
+  <option value=""></option>
+  <option value="onCaserta.html">ON-Caserta</option>
+  <option value="onMarcianise.html">ON-Marcianise</option>
+  <option value="noconnection/offCaserta.html">OFF-Caserta</option>
+  <option value="noconnetcion/offMarcianise.html">OFF-Marcianise</option>
+</select>
+
+<script>
+  function openDropdown() {
+    const dropdown = document.getElementById('hiddenDropdown');
+    dropdown.style.display = 'block'; // serve per farlo cliccabile
+    dropdown.focus(); // simula clic su iPhone
+    dropdown.click(); // forza l'apertura su alcuni dispositivi
+  }
+
+  document.getElementById('hiddenDropdown').addEventListener('change', function () {
+    const url = this.value;
+    if (url) window.location.href = url;
+  });
+</script>
+
+
       <h4>I Miei Titoli</h4>
       <div class="right-icons">
         <img src="./icons/usera.png" alt="User" class="icon" id="user-icon" />
