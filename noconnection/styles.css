@@ -507,3 +507,49 @@ body {
   color: currentColor;    /* eredita il colore del testo/bordo */
   vertical-align: middle; /* allinea con il testo */
 }
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-native select {
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  appearance: none; /* Rimuove lo stile nativo su Android/desktop */
+  -webkit-appearance: none; /* Usa stile nativo iOS */
+}
+
