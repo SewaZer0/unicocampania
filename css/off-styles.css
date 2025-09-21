@@ -1,0 +1,555 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;          /* sfondo per tutta l’area */
+}
+
+/* Wrapper generale: spingi tutto giù di safe-area-inset-top */
+.app-container {
+  padding-top: env(safe-area-inset-top);
+  padding-top: constant(safe-area-inset-top); /* compatibilità iOS <11 */
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: constant(safe-area-inset-bottom);
+}
+
+/* la tua header blu che parte dopo la safe-area */
+.header {
+  position: fixed;
+  top: env(safe-area-inset-top);
+  left: 0;
+  width: 100%;
+  height: 44px;               /* altezza del tuo header */
+  background-color: #007aff;  /* il blu */
+  z-index: 100;
+}
+/* pseudo-elemento per colorare di nero solo la safe-area superiore */
+.header::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: env(safe-area-inset-top);
+  background-color: #000;
+  z-index: 101;
+}
+
+/* Il contenuto sottostante deve partire dopo l’header */
+main {
+  margin-top: calc(50px + env(safe-area-inset-top));
+  margin-top: calc(50px + constant(safe-area-inset-top));
+}
+
+
+body {
+  /* sposta il contenuto sotto la status bar su iOS */
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+
+.header {
+  background-color: #2f4399;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header h1 {
+  font-size: 1.4rem;
+  font-weight: normal;
+  text-align: center;
+  flex: 1;
+  margin: 0;
+}
+
+.left-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 80px;
+}
+
+.right-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 80px;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.header i {
+  font-size: 1.4rem;
+}
+
+.active-title {
+  background-color: #4dd0a7;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  z-index: 1;
+  margin-top: 50px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  margin: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.card2 {
+  border-radius: 8px;
+  margin: 15px;
+  overflow: hidden;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  color: #2f4399;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-header .expand-icon {
+  color: #b2d978;
+  font-size: 3rem;
+  margin-top: -15px;
+  font-weight: normal;
+  transform: rotate(90deg);
+  /*defaultrotation*/
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+}
+
+.card-content {
+  padding: 15px;
+  margin-top: -18px;
+  margin-bottom: -10px;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-details {
+  flex: 1;
+  margin-top: 5px;
+}
+
+.price {
+  color: #2f4399;
+  font-size: larger;
+}
+
+.user-photo {
+  width: 120px;
+  height: 140px;
+  overflow: hidden;
+  margin-top: -25px;
+}
+
+.user-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.user-id,
+.user-expiry {
+  margin-bottom: 15px;
+}
+
+.label {
+  font-weight: normal;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.value {
+  font-weight: bold;
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: inherit;
+  pointer-events: none;
+}
+
+.qr-section {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.qr-code img {
+  width: 210px;
+  height: 210px;
+  display: block;
+  margin: auto;
+  margin-top: -10px;
+  cursor: pointer;
+}
+
+
+
+.time-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -10px;
+  padding: 0 0px 15px;
+}
+
+.time-section .time {
+  display: flex;
+  align-items: center;
+}
+
+.current-time {
+  padding-left: -10px;
+}
+.time-section .time span {
+  margin-left: 10px;
+}
+
+.ticket-number {
+  color: #666;
+}
+
+.pass-type {
+  color: #2f4399;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.route-card {
+  background-color: #eaeaea;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.route-label {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.route-label2 {
+  font-size: 1rem;
+  margin-bottom: -5px;
+  font-weight: 300;
+}
+
+.route-value {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.route-value2 {
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
+.valid-card {
+  background-color: #4dd0a7;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: -10px;
+}
+
+.ticket-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.detail-row-3 {
+  padding: 10px;
+  color: #949494;
+  font-size: 1rem;
+  font-weight: 300;
+  margin-top: -15px;
+  margin-left: -20px;
+}
+
+.detail-row-2 {
+  padding: 10px;
+  color: #949494;
+  font-size: 1.1rem;
+  margin-top: -7px;
+}
+
+.detail-row {
+  background-color: #eaeaea;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.ticket-id {
+  font-weight: bolder;
+  text-align: right;
+  font-size: 1.08rem;
+  margin-top: 5px;
+}
+
+.logo-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.unico-logo {
+  width: 110px;
+}
+
+.region-logo {
+  width: 170px;
+  margin-left: -25px;
+  margin-top: 30px;
+}
+
+.consortium-info {
+  color: #000;
+  text-align: left;
+  padding: 5px;
+  font-weight: bold;
+  margin-top: 25px;
+  margin-left: -15px;
+}
+
+
+
+
+.bottom-images {
+  padding-left: 20px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.icon-home {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.icon-left {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-right: -5px;
+}
+
+.icon-clock {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin-right: -5px;
+  opacity: 0.7;
+  vertical-align: middle;
+}
+
+.icon-search {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: -12px;
+  margin-top: -3px;
+}
+
+.icon-lock {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: 7px;
+}
+
+.empty-space {
+  margin-top: 20px;
+}
+
+
+/* Chrome, Safari, Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+/* IE, Edge */
+body {
+  -ms-overflow-style: none;
+}
+/* Firefox */
+body {
+  scrollbar-width: none;
+}
+
+/* Aggiunge 5px di blur al QR code */
+#qrCodeImage {
+  filter: blur(2px);
+}
+
+/* wrapper per posizionare il banner sopra il QR */
+.qr-container {
+  position: relative;
+  display: inline-block;  /* occupa solo il box dell’immagine */
+}
+
+/* banner blu proporzionato e centrato orizzontalmente */
+.qr-banner {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;              /* occupa tutta la larghezza del QR */
+  text-align: center;       /* testo centrato orizzontalmente */
+  background: rgba(47, 67, 153, 0.9); /* #2f4399 con 60% di opacità */
+  padding: 0.8em 0;         /* verticale come prima, orizzontale zero */
+  border-radius: 0.5em;
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+} 
+
+.aggiorna-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 15px;
+      border: 2px solid #2f4399;
+      border-radius: 11px;
+      background-color: #fff;
+      color: #2f4399;
+	  font-weight: bold;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .aggiorna-btn:hover {
+      background-color: rgba(0, 122, 255, 0.1);
+    }
+    /* Ridimensiona e colora l'icona */
+    .aggiorna-btn ion-icon {
+      width: 20px;
+      height: 20px;
+      color: currentColor;
+    }
+
+/* dentro styles.css, alla fine */
+.qr-code {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qr-code .aggiorna-btn {
+  margin-top: 30px;    /* spazio tra QR e bottone */
+}
+
+.aggiorna-btn i.mdi {
+  font-size: 20px;        /* dimensione icona */
+  line-height: 1;
+  color: currentColor;    /* eredita il colore del testo/bordo */
+  vertical-align: middle; /* allinea con il testo */
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-native select {
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  appearance: none; /* Rimuove lo stile nativo su Android/desktop */
+  -webkit-appearance: none; /* Usa stile nativo iOS */
+}
+

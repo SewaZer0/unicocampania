@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no, address=no" />
+
+    <title>Student Transport Pass - UnicoCampania</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/off-styles.css" />
+    <link rel="manifest" href="/unicocampania/manifest.json">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title" content="UnicoCampania">
+	<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	
+	<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               minimum-scale=1.0,
+               user-scalable=no,
+               viewport-fit=cover">
+			   
+	<!-- iOS PWA standalone -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- opaco nero, e il contenuto parte subito sotto -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	
+	<link
+  href="https://unpkg.com/@mdi/font@6.9.96/css/materialdesignicons.min.css"
+  rel="stylesheet">
+
+  </head>
+  <body>
+    <!-- Header Section -->
+    <div class="header">
+     <div class="icon-wrapper" onclick="openDropdown()">
+  <img src="./icons/less.png" alt="Back" class="icon-left" />
+  <img src="./icons/home.png" alt="Home" class="icon-home" />
+</div>
+
+<!-- Select nascosto -->
+<select id="hiddenDropdown" style="display: none;">
+  <option value=""></option>
+  <option value="onCaserta.html">ON-Caserta</option>
+  <option value="onMarcianise.html">ON-Marcianise</option>
+  <option value="offCaserta.html">OFF-Caserta</option>
+  <option value="offMarcianise.html">OFF-Marcianise</option>
+</select>
+
+<script>
+  function openDropdown() {
+    const dropdown = document.getElementById('hiddenDropdown');
+    dropdown.style.display = 'block'; // serve per farlo cliccabile
+    dropdown.focus(); // simula clic su iPhone
+    dropdown.click(); // forza l'apertura su alcuni dispositivi
+  }
+
+  document.getElementById('hiddenDropdown').addEventListener('change', function () {
+    const url = this.value;
+    if (url) window.location.href = url;
+  });
+</script>
+
+      <h4>I Miei Titoli</h4>
+      <div class="right-icons">
+        <img src="./icons/usera.png" alt="User" class="icon" id="user-icon" />
+      </div>
+    </div>
+    <!-- Active Title Section -->
+    <div class="active-title">TITOLO ATTIVO</div>
+    <div class="empty-space"></div>
+
+    <!-- First Card - User Information -->
+    <div class="card">
+      <div class="card-header">
+        Informazioni tessera
+        <span class="expand-icon">&#8250;</span>
+      </div>
+      <div class="card-content">
+        <div class="user-info">
+          <div class="user-details">
+            <div class="user-name">SAMUELE SPARNO</div>
+            <div class="user-id">
+              <span class="label">Tesserino n.</span><br />
+              <pre><span class="value">2000279416</span></pre>
+            </div>
+            <div class="user-expiry">
+              <span class="label">Scadenza:</span><br />
+              <span class="value">31/07/2025</span>
+            </div>
+          </div>
+          <div class="user-photo">
+            <img src="./images/user.png" alt="User Photo" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-space"></div>
+
+    <!-- Second Card - QR Code -->
+    <div class="card">
+      <div class="card-header">
+        Controllo e validazione
+        <span class="expand-icon">&#8250;</span>
+      </div>
+      <div class="card-content">
+        <div class="qr-section">
+          <div class="qr-code">
+		  <div class="qr-container">
+            <img src="./images/qrimg.png" alt="QR Code" id="qrCodeImage" />
+			<div class="qr-banner">QR Code Scaduto</div>
+		  </div>
+		<button class="aggiorna-btn">
+		 <i class="mdi mdi-refresh" aria-hidden="true"></i>
+			Aggiorna
+		  </button>
+		  </br>
+          </div>
+        </div>
+        <div class="time-section">
+          <div class="time">
+            <img src="./icons/clock.png" alt="Clock" class="icon-clock" />
+            <span class="current-time">16:11:54</span>
+          </div>
+
+          <div class="time">
+            <img src="./icons/lock2.png" alt="Search" class="icon-lock" />
+            <div class="ticket-number">910</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pass Type Section -->
+    <div class="pass-type">ABB.STU- INT. UNICOCAMPANIA - <br />per NAPOLI</div>
+
+    <!-- Region Info -->
+    <div class="card2">
+      <div class="card-content">
+        <div>ABB INTEGRATO STUDENTI REGIONE CAMPANIA TIC-SG-NA7D-00</div>
+
+        <div class="ticket-details">
+          <div class="route-card">
+            <div class="route-label">Tratta:</div>
+            <div class="route-value">Da CASERTA a FISCIANO</div>
+          </div>
+
+          <div class="valid-card">
+            <div class="route-label2">Valido fino al:</div>
+            <div class="route-value2">01/08/2025</div>
+          </div>
+
+   
+
+          <div class="detail-row-2">
+            <div>EMISSIONE TPLW</div>
+          </div>
+
+          <div class="detail-row">
+            <div>Emesso il: <b>07/09/2024 16:25</b></div>
+          </div>
+
+          <div class="price-row">
+            <div>Prezzo</div>
+            <div class="price">€0,00</div>
+          </div>
+
+          <div class="bottom-images">
+            <div class="logo-section">
+              <img
+                src="./images/unico_logo.png"
+                alt="UNICO Campania Logo"
+                class="unico-logo"
+              />
+              <div class="ticket-id">#WJB6Z69Y6J<br />#2000W/1154187</div>
+            </div>
+
+            <div class="logo-section">
+              <img
+                src="./images/regione_campania_logo.jpg"
+                alt="Regione Campania Logo"
+                class="region-logo"
+              />
+            </div>
+          </div>
+
+          <div class="consortium-info">CONSORZIO UNICOCAMPANIA</div>
+
+          <div class="detail-row-3">
+            <div>
+              Via Cisterna dell'olio 44-80133 Napoli (NA)
+              <pre>P.Iva: 06878110638</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <script src="js/off-index.js"></script>
+  </body>
+</html>
