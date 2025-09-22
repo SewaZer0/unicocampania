@@ -2,6 +2,16 @@
   --footer-height: 120px; /* adjust this if your footer is taller */
 }
 
+header {
+  background-color: #24A647;
+  padding-top: env(safe-area-inset-top);
+}
+html, body {
+  background-color: #24A647;
+  /* make sure content doesn't get hidden behind the notch/status bar */
+  padding-top: env(safe-area-inset-top);
+}
+
 * {
   margin: 0;
   padding: 0;
