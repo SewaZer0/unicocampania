@@ -37,32 +37,12 @@
 
     <!-- Header Section -->
     <div class="header">
-      <div class="icon-wrapper" onclick="openDropdown()">
+      <div class="icon-wrapper">
         <img src="./icons/less.png" alt="Back" class="icon-left" />
       </div>
 
-      <!-- Select nascosto -->
-      <select id="hiddenDropdown" style="display: none;">
-        <option value=""></option>
-        <option value="onCaserta.html">ON-Caserta</option>
-        <option value="onMarcianise.html">ON-Marcianise</option>
-        <option value="offCaserta.html">OFF-Caserta</option>
-        <option value="offMarcianise.html">OFF-Marcianise</option>
-      </select>
+    
 
-      <script>
-        function openDropdown() {
-          const dropdown = document.getElementById('hiddenDropdown');
-          dropdown.style.display = 'block'; // serve per farlo cliccabile
-          dropdown.focus(); // simula clic su iPhone
-          dropdown.click(); // forza l'apertura su alcuni dispositivi
-        }
-
-        document.getElementById('hiddenDropdown').addEventListener('change', function () {
-          const url = this.value;
-          if (url) window.location.href = url;
-        });
-      </script>
 
 
       <h4 class="main-heading">Ticket attivo</h4>
