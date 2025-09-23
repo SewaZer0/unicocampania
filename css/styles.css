@@ -281,6 +281,7 @@ body {
 
 .current-time {
   padding-left: -10px;
+  font-weight: bold;
 }
 .time-section .time span {
   margin-left: 10px;
