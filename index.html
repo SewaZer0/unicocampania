@@ -1,282 +1,911 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="format-detection" content="telephone=no, address=no" />
+:root {
+  --footer-height: 120px; /* adjust this if your footer is taller */
+}
 
-  <title>Student Transport Pass - UnicoCampania</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="manifest" href="/unicocampania/manifest.json">
-  <meta name="theme-color" content="#27612e">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="UnicoCampania">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+header {
+  background-color: #27612e;
+  padding-top: env(safe-area-inset-top);
+}
+html, body {
+  background-color: #27612e;
+  /* make sure content doesn't get hidden behind the notch/status bar */
+  padding-top: env(safe-area-inset-top);
+}
 
-  <meta name="viewport" content="width=device-width,
-               initial-scale=1.0,
-               maximum-scale=1.0,
-               minimum-scale=1.0,
-               user-scalable=no,
-               viewport-fit=cover">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
 
-  <!-- iOS PWA standalone -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <!-- opaco nero, e il contenuto parte subito sotto -->
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff; /* use white to avoid green showing on iOS overscroll */
+  -webkit-text-size-adjust: 100%;
+  -webkit-overflow-scrolling: touch;
+}
 
-</head>
+/* Wrapper generale: spingi tutto giù di safe-area-inset-top */
+.app-container {
+  padding-top: env(safe-area-inset-top);
+  padding-top: constant(safe-area-inset-top); /* compatibilità iOS <11 */
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: constant(safe-area-inset-bottom);
+}
 
+/* la tua header blu che parte dopo la safe-area */
+.header {
+  position: fixed;
+  top: env(safe-area-inset-top);
+  left: 0;
+  width: 100%;
+  height: 44px;               /* altezza del tuo header */
+  background-color: #27612e;  
+  z-index: 100;
+}
+/* pseudo-elemento per colorare di nero solo la safe-area superiore */
+.header::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #27612e;
+  height: env(safe-area-inset-top);
+  z-index: 101;
+}
 
-<body>
-
-  <div class="body-wrapper">
-
-    <!-- Header Section -->
-    <div class="header">
-      <div class="icon-wrapper">
-        <img src="./icons/less.png" alt="Back" class="icon-left" />
-      </div>
-
-    
-
-
-
-      <h4 class="main-heading">Ticket attivo</h4>
-
-      <div class="header-right"></div>
-
-    </div>
-
-    <div class="empty-space"></div>
-
-
-
-    <!-- First Card - User Information -->
-    <div class="container">
-
-      <!--logo-->
-      <div class="logo-container">
-        <img src="images/unico_logo.png" alt="">
-      </div>
-
-      <!-- Pass Type Section -->
-      <div class="pass-type">ABB.STU- INT. UNICOCAMPANIA - <br />per NAPOLI</div>
-      <div class="pass-type-paragraph">ABB INTEGRATO STUDENTI REGIONE CAMPANIA TIC-SG-NA7D-00</div>
-
-
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <div class="card-image">
-              <img src="https://img.icons8.com/?size=100&id=dznlMKuRnx7s&format=png&color=1A4B9A" alt="">
-            </div>
-            Informazioni tessera
-          </div>
-          <span class="expand-icon">&#8250;</span>
-        </div>
-        <div id="main-expandables" class="card-content">
-          <div class="user-info">
-            <div class="user-photo">
-              <img src="./images/user.png" alt="User Photo" />
-            </div>
-            <div class="user-details">
-              <div class="user-name">SAMUELE SPARNO
-              <span class="label">SPRSML03A15B963G</span><br /></div>
-             
-              <div class="user-id">
-                <span class="label">Tesserino n.</span><br />
-                <pre><span class="value">2000279416</span></pre>
-              </div>
-              
-              <div class="user-expiry">
-                <span class="label">Scadenza:</span><br />
-                <span class="value">31/07/2026</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="empty-space"></div>
-
-      <!-- Second Card - QR Code -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <div class="card-image">
-              <img src="https://img.icons8.com/?size=100&id=2xIX3PtQG26u&format=png&color=1A4B9A" alt="">
-            </div>
-            Controllo e validazione
-          </div>
-          <span class="expand-icon">&#8250;</span>
-        </div>
-
-
-        <div id="main-expandables qr-content" class="card-content">
-          <div class="qr-section">
-            <div class="qr-code">
-              <img src="./images/qrimg.png" alt="QR Code" id="qrCodeImage" />
-            </div>
-          
-            <div class="qr-button" id="openQrButton">
-            <!--  
-              <img src="./icons/search.png" alt="Search" class="icon-search" />
-              <span>Apri QR Code</span>
-            -->
-            </div>
-            
-          </div>
-          <div class="time-section">
-            <div class="time">
-              <img class="icon-clock" src="https://img.icons8.com/?size=100&id=82767&format=png&color=1A4B9A" alt="">
-              <span class="current-time">16:11:54</span>
-            </div>
-
-            <div class="time">
-              <img class="icon-lock" src="https://img.icons8.com/?size=100&id=82747&format=png&color=1A4B9A" alt="">
-              <div class="ticket-number">910</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!--triangle decoration-->
-      <div class="triangle-decoration">
-
-      </div>
-
-
-
-
-      <!-- Region Info -->
-      <div class="card2">
-        <div class="card-content">
-
-
-          <div class="ticket-details">
-            <div class="route-card">
-              <div class="route-value">Da <b>MARCIANISE</b> a <b>FISCIANO</b></div>
-              <p>Valido dal <b>19/09/2025</b> a <b>01/08/2026</b></p>
-            </div>
-
-            <div class="detail-row">
-              <div>Emesso il:</div>
-              <div><b>19/09/2025 16:00</b></div>
-            </div>
-
-            <div class="price-row">
-              <div>Costo</div>
-              <div class="price">0,00 €</div>
-            </div>
-
-            <div class="new-details">
-              <p>Dettagli</p>
-              <div class="details-drawer" id="drawerButton">
-                <p>Leggi tutto</p>
-                <p class="drawer-btn">&#8250;</p>
-              </div>
-            </div>
-
-            <!-- Expandable Details Content -->
-            <div class="details-content" id="detailsContent" style="display: none;">
-              <div class="details-section">
-                <div class="detail-item">
-                  <span class="detail-value">CONSORZIO UNICOCAMPANIA</span>
-                </div>
-                <div class="detail-item">
-                  <span class="detail-value">P.za Matteatti - 80133 Napoli(NA)</span>
-                </div>
-                <div class="detail-item">
-                  <span class="detail-value">P.iva: 0684811063B</span>
-                </div>
-              </div>
-
-
-
-
-            </div>
-
-            <div class="emission-details">
-              <div class="emission-row">
-                <p>Cadice Ticket:</p>
-                <p>2000W/1154197</p>
-              </div>
-              <div class="emission-row">
-                <p>PNR:</p>
-                <p>WJB6Z69Y6J</p>
-              </div>
-            </div>
-
-            <div class="consortium-info"></div>
-
-            <div class="detail-row-3">
-              <div>
-               
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- QR Code Modal -->
-      <div class="qr-modal" id="qrModal">
-        <button class="close-modal" id="closeModal">
-          <div class="qr-modal-wrapper">
-            <!-- <i class="fas fa-times"></i> -->
-            <div class="qr-modal-content">
-              <img src="./images/qrimg.png" alt="QR Code" id="modalQrImage" />
-            </div>
-          </div>
-        </button>
-      </div>
-    </div>
-
-
-    
-  </div>
-
- <!-- TRASFERISCI TICKET-->
- 
- <div class="footer">
-      <button class="footer-btn">
-        <div class="footer-icon">
-          <i class="fa fa-paper-plane" aria-hidden="true"></i>
-        </div>
-        <p>Transferisci Ticket</p>
-      </button>
-    </div>
-
+/* Il contenuto sottostante deve partire dopo l’header */
+main {
+  margin-top: calc(50px + env(safe-area-inset-top));
+  margin-top: calc(50px + constant(safe-area-inset-top));
+  /* ensure main area is at least viewport minus header and footer */
   
-  <script src="js/index.js"></script>
-  <script>
-    const container = document.querySelector('.triangle-decoration');
-    const colors = ['#dedede', '#e4e4e4', '#f0f0f0'];
-    const triWidth = 40; // 20px left + 20px right borders
+}
 
-    for (let r = 0; r < 5; r++) {
-      const row = document.createElement('div');
-      row.className = 'triangle-row';
-      if (r % 2 !== 0) row.classList.add('odd'); // apply padding-left offset
-      row.style.top = `${r * 20}px`;
 
-      // enough triangles for seamless scroll
-      const count = Math.ceil(window.innerWidth / triWidth) * 2 + 2;
-      for (let i = 0; i < count; i++) {
-        const t = document.createElement('div');
-        t.className = 'triangle';
-        t.style.borderBottom = `20px solid ${colors[Math.floor(Math.random() * colors.length)]
-          }`;
-        row.appendChild(t);
-      }
-      container.appendChild(row);
-    }
-  </script>
-</body>
+body {
+  /* sposta il contenuto sotto la status bar su iOS */
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
 
-</html>
+.header {
+  background-color: #27612e;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header h1 {
+  font-size: 1.4rem;
+  font-weight: normal;
+  text-align: center;
+  flex: 1;
+  margin: 0;
+}
+
+.left-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 80px;
+}
+
+.right-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 80px;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.header i {
+  font-size: 1.4rem;
+}
+
+.active-title {
+  background-color: #4dd0a7;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  z-index: 1;
+  margin-top: 50px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.152);
+  border-radius: 8px;
+  margin: 15px;
+  overflow: hidden;
+}
+
+.card2 {
+  border-radius: 8px;
+  margin: 15px;
+  overflow: hidden;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  color: #000000;
+  background-color: #f8f9fa;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-header .expand-icon {
+  color: #1A4B9A;
+  font-size: 2rem;
+  font-weight: normal;
+  transform: rotate(0deg);
+  /*defaultrotation*/
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+}
+
+.card-content {
+  margin-top: -18px;
+  margin-bottom: -10px;
+}
+
+.user-info {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  align-items: center;
+  padding: 5px;
+  
+}
+
+.user-details {
+  margin-top: 5px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.price {
+  color: black;
+  font-size: larger;
+}
+
+.user-photo {
+  width: 120px;
+  height: 140px;
+  overflow: hidden;
+  margin-top: -25px;
+  padding: 5px;
+  flex: 0 0 auto;
+}
+
+.user-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.user-id,
+.user-expiry {
+  margin-bottom: 15px;
+}
+
+.label {
+  font-weight: normal;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.value {
+  font-weight: bold;
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: inherit;
+  pointer-events: none;
+}
+
+.qr-section {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #f8f9fa;
+}
+
+.qr-code img {
+  width: 210px;
+  height: 210px;
+  display: block;
+  margin: auto;
+  margin-top: -10px;
+  cursor: pointer;
+}
+
+.qr-button {
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.qr-button span {
+  margin-left: 10px;
+}
+
+.time-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #1A4B9A;
+  background-color: #f8f9fa;
+  font-size: 1.2rem;
+  margin-top: -10px;
+  padding: 15px 10px;
+}
+
+.time-section .time {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.current-time {
+  padding-left: -10px;
+}
+.time-section .time span {
+  margin-left: 10px;
+}
+
+.ticket-number {
+  color: #1A4B9A;
+  font-size: 15px;
+
+}
+
+.pass-type {
+  margin-top: 15px;
+  color: #000000;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: left;
+  padding: 0 15px;
+}
+
+.pass-type-paragraph {
+  font-size: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.route-card {
+  background-color: #27612e;
+  padding: 10px;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.route-label {
+  font-size: 0.2rem;
+  margin-bottom: 5px;
+}
+
+.route-label2 {
+  font-size: 0.2rem;
+  margin-bottom: -5px;
+  font-weight: 300;
+}
+
+.route-value {
+  font-weight: 400;
+}
+
+.route-value2 {
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
+.valid-card {
+  background-color: #4dd0a7;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: -10px;
+}
+
+.ticket-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.detail-row-3 {
+  padding: 10px;
+  color: #949494;
+  font-size: 1rem;
+  font-weight: 300;
+  margin-top: -15px;
+  margin-left: -20px;
+}
+
+.detail-row-2 {
+  padding: 10px;
+  color: #949494;
+  font-size: 1.1rem;
+  margin-top: -7px;
+}
+
+.detail-row {
+  background-color: none;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-bottom: #e0e0e0 solid 2px;
+  padding-bottom: 5px;
+  margin-top: 10px;
+}
+
+.ticket-id {
+  font-weight: bolder;
+  text-align: right;
+  font-size: 1.08rem;
+  margin-top: 5px;
+}
+
+.logo-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.unico-logo {
+  width: 110px;
+}
+
+.region-logo {
+  width: 170px;
+  margin-left: -25px;
+  margin-top: 30px;
+}
+
+.consortium-info {
+  color: #000;
+  text-align: left;
+  padding: 5px;
+  font-weight: bold;
+  margin-top: 25px;
+  margin-left: -15px;
+}
+
+/* QR Code Modal Styles */
+.qr-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+  background-color: white;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.qr-modal-wrapper {
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  height: 100vh; /* Full viewport height */
+  margin-top: -50px;
+}
+
+.qr-modal-content {
+  text-align: center;
+}
+
+.qr-modal img {
+  /*
+  max-width: 50%;
+  max-height: 50vh;
+  */
+  width: 70vw;
+  max-width: 300px;
+  height: auto;
+}
+
+.close-modal {
+  position: absolute;
+
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.bottom-images {
+  padding-left: 20px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.icon-home {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.icon-left {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-right: -5px;
+}
+
+.icon-clock {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: -5px;
+  vertical-align: middle;
+  color: #1A4B9A;
+}
+
+.icon-search {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: -12px;
+  margin-top: -3px;
+}
+
+.icon-lock {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: 7px;
+}
+
+.empty-space {
+  margin-top: 20px;
+}
+
+
+/* Chrome, Safari, Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+/* IE, Edge */
+body {
+  -ms-overflow-style: none;
+}
+/* Firefox */
+body {
+  scrollbar-width: none;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-native select {
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  appearance: none; /* Rimuove lo stile nativo su Android/desktop */
+  -webkit-appearance: none; /* Usa stile nativo iOS */
+}
+
+.emission-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #808080;
+}
+
+
+.emission-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.new-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;;
+}
+
+.details-drawer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+
+@media (max-width: 577px) {
+  .user-info {
+    gap: 10px;
+    flex-direction: row;
+  }
+
+  .user-details {
+    flex: 3/4;
+  }
+
+  .user-photo {
+    flex: 1/4;
+  }
+}
+
+/* Expandable Details Styles */
+.details-content {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding: 20px 0px;
+}
+
+.details-section {
+  padding: 20px;
+  border-bottom: 1px solid #000000;
+}
+
+.details-section:last-child {
+  border-bottom: none;
+}
+
+.details-section h4 {
+  color: #2f4399;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #000000;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  padding: 5px 0;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #555;
+  flex: 1;
+  align-self: flex-end;
+  margin-right: 15px;
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  color: #888888;
+  flex: 1;
+  align-self: flex-end;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+/* Make drawer button clickable and add hover effects */
+.details-drawer {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 5px;
+  border-radius: 4px;
+  display: flex;
+  color: #1A4B9A;
+  font-weight: bold;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+.drawer-btn {
+  transition: transform 0.2s ease;
+  font-size: 2rem;
+  font-weight: normal;
+  display: flex;
+  align-self: center;
+  padding-bottom: 4px;
+}
+
+.details-drawer:hover .drawer-btn {
+  transform: translateX(3px);
+}
+
+.drawer-btn{
+  transform: rotate(90deg);
+}
+
+/* Rotate arrow when expanded */
+.details-drawer.expanded .drawer-btn {
+  transform: rotate(270deg);
+}
+
+/*body wrapper*/
+.body-wrapper {
+  padding: 20px;
+  padding-bottom: calc(var(--footer-height, 120px) + env(safe-area-inset-bottom, 0px));
+  background: #27612e;
+}
+
+
+
+.container {
+  background: #ffffff;
+  border-radius: 15px;
+  margin-top: 55px;
+  padding-top: 25px;
+  margin-bottom: 20px;
+}
+
+.logo-container {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 15px;
+}
+
+.card-title {
+  display: flex;
+  color: #555555;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card-image img{
+  width: 30px;
+  height: 30px;
+}
+
+
+
+.triangle-decoration img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.main-heading {
+  font-size: 1.2rem;
+   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  pointer-events: none; /* if you want clicks to hit left/right items */
+  width: auto;
+  text-align: center;
+}
+
+#main-expandables {
+  display: none; /* Hidden by default */
+  background-color: #f8f9fabb;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.footer {
+  min-height: var(--footer-height, 120px);
+  box-sizing: border-box;
+}
+
+.footer-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.footer-icon i {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+
+.footer-btn {
+  background-color: #1A4B9A;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 20px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.footer-btn p {
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  margin: 0; 
+  font-weight: 500;
+}
+
+
+/* Responsive styles for expandable details */
+@media (max-width: 480px) {
+  .details-section {
+    padding: 15px;
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .detail-label {
+    margin-bottom: 5px;
+    margin-right: 0;
+  }
+  
+  .detail-value {
+    text-align: left;
+  }
+  
+  .details-section h4 {
+    font-size: 0.95rem;
+    color: #000000;
+  }
+}
+
+ .triangle-decoration {
+    width: 100%;
+    height: 60px;
+    background: #fff;      /* page background */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .triangle-row {
+    position: absolute;
+    display: flex;
+    gap: 0;
+    width: 200%;
+    height: 20px;
+    animation: slide-right 5s linear infinite;
+  }
+
+  /* keyframes: only horizontal move */
+  @keyframes slide-right {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+  }
+
+  /* vertical placement */
+  .triangle-row:nth-child(1) { top: 0; }
+  .triangle-row:nth-child(2) { top: 20px; }
+  .triangle-row:nth-child(3) { top: 40px; }
+  .triangle-row:nth-child(4) { top: 60px; }
+  .triangle-row:nth-child(5) { top: 80px; }
+
+  /* permanent half-triangle offset on odd rows */
+  .triangle-row.odd {
+    padding-left: 20px;  /* NOT transform */
+  }
+
+
+
+
