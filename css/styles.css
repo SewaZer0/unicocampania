@@ -3,11 +3,11 @@
 }
 
 header {
-  background-color: #24A647;
+  background-color:#2A652C;
   padding-top: env(safe-area-inset-top);
 }
 html, body {
-  background-color: #24A647;
+  background-color:#2A652C;
   /* make sure content doesn't get hidden behind the notch/status bar */
   padding-top: env(safe-area-inset-top);
 }
@@ -43,7 +43,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 44px;               /* altezza del tuo header */
-  background-color: #24A647;  
+  background-color: #2A652C;  
   z-index: 100;
 }
 /* pseudo-elemento per colorare di nero solo la safe-area superiore */
@@ -53,7 +53,7 @@ html, body {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #24A647;
+  background-color: #2A652C;
   height: env(safe-area-inset-top);
   z-index: 101;
 }
@@ -74,7 +74,7 @@ body {
 }
 
 .header {
-  background-color: #24A647;
+  background-color:#2A652C;
   color: white;
   padding: 15px;
   display: flex;
