@@ -135,6 +135,7 @@ body {
   border-radius: 8px;
   margin: 15px;
   overflow: hidden;
+  border: 2px solid #f8f9fa;
 }
 
 .card2 {
