@@ -120,7 +120,7 @@ body {
 }
 
 .active-title {
-  background-color: #4dd0a7;
+  background-color: #27612e;
   color: white;
   padding: 10px;
   text-align: center;
@@ -307,7 +307,7 @@ body {
   padding-right: 15px;
 }
 .route-card {
-  background-color: #409843;
+  background-color: #27612e;
   padding: 10px;
   color: white;
   margin-bottom: 10px;
@@ -336,7 +336,7 @@ body {
 }
 
 .valid-card {
-  background-color: #4dd0a7;
+  background-color: #27612e;
   color: white;
   border-radius: 5px;
   padding: 10px;
