@@ -120,7 +120,7 @@ body {
 }
 
 .active-title {
-  background-color: #27612e;
+  background-color: #4dd0a7;
   color: white;
   padding: 10px;
   text-align: center;
@@ -336,7 +336,7 @@ body {
 }
 
 .valid-card {
-  background-color: #27612e;
+  background-color: #4dd0a7;
   color: white;
   border-radius: 5px;
   padding: 10px;
@@ -719,7 +719,7 @@ body {
 .body-wrapper {
   padding: 20px;
   padding-bottom: calc(var(--footer-height, 120px) + env(safe-area-inset-bottom, 0px));
-  background: #24A647;
+  background: #27612e;
 }
 
 
