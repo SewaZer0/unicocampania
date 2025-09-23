@@ -149,7 +149,7 @@ body {
   align-items: center;
   padding: 15px;
   color: #000000;
-  background-color: #fdfeff;
+  background-color: #f8f9fa;
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -236,7 +236,7 @@ body {
 .qr-section {
   text-align: center;
   padding: 20px 0;
-  background-color: #fdfeff;
+  background-color: #f8f9fa;
 }
 
 .qr-code img {
@@ -267,7 +267,7 @@ body {
   justify-content: space-between;
   align-items: center;
   color: #1A4B9A;
-  background-color: #fdfeff;
+  background-color: #f8f9fa;
   font-size: 1.2rem;
   margin-top: -10px;
   padding: 15px 10px;
@@ -624,7 +624,7 @@ body {
 
 /* Expandable Details Styles */
 .details-content {
-  background-color: #fdfeff;
+  background-color: #f8f9fa;
   border-radius: 8px;
   margin-top: 15px;
   overflow: hidden;
@@ -776,7 +776,7 @@ body {
 
 #main-expandables {
   display: none; /* Hidden by default */
-  background-color: #fdfeffbb;
+  background-color: #f8f9fabb;
 }
 
 .footer {
