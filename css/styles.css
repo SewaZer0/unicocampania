@@ -242,8 +242,8 @@ body {
 }
 
 .qr-code img {
-  width: 210px;
-  height: 210px;
+  width: 150px;
+  height: 150px;
   display: block;
   margin: auto;
   margin-top: -10px;
